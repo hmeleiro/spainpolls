@@ -13,7 +13,7 @@ scrape data, or modify records.
 
 ``` r
 # install.packages("pak")
-pak::pak("spainelectoralproject/spainpolls")
+pak::pak("hmeleiro/spainpolls")
 ```
 
 ## Covered Endpoints
