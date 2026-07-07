@@ -1,0 +1,155 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+# spainpolls
+
+`spainpolls` is an R client for the Spain Electoral Polls API. It returns tidy
+`tibble`s for elections, pollsters, parties, polls, long-format poll results,
+and voting-intention time series.
+
+The package queries the public read-only API documented in
+`docs/r-package-handoff/`. It does not access PostgreSQL directly, scrape data,
+or modify records.
+
+## Installation
+
+```{r}
+# install.packages("pak")
+pak::pak("")
+```
+
+## Configure the API URL
+
+By default, `spainpolls` uses:
+
+```{r}
+spainpolls_api_url()
+```
+
+To use a local API:
+
+```{r}
+set_spainpolls_api_url("http://localhost:8000")
+```
+
+You can also set the global option directly:
+
+```{r}
+options(spainpolls.api_url = "http://localhost:8000")
+```
+
+## Covered Endpoints
+
+The package covers these public endpoints:
+
+- `GET /health`
+- `GET /api/v1/elections`
+- `GET /api/v1/pollsters`
+- `GET /api/v1/parties`
+- `GET /api/v1/polls`
+- `GET /api/v1/polls/{poll_id}`
+- `GET /api/v1/results`
+- `GET /api/v1/timeseries`
+
+`GET /api/v1/polls/{poll_id}/results` is not implemented by the API. Use
+`get_poll_results()` to fetch `/api/v1/polls/{poll_id}` and extract the nested
+results.
+
+## Basic Use
+
+```{r}
+library(spainpolls)
+
+elections <- get_elections(limit = 10)
+pollsters <- get_pollsters(election_key = "congreso_espana_2027")
+parties <- get_parties(election_key = "congreso_espana_2027")
+```
+
+## Polls
+
+```{r}
+polls <- get_polls(
+  election_key = "congreso_espana_2027",
+  limit = 10
+)
+
+poll <- get_poll(101)
+poll_results <- get_poll_results(101)
+```
+
+## Long Results
+
+```{r}
+results <- get_results(
+  election_key = "congreso_espana_2027",
+  party = "psoe",
+  collect_all = TRUE
+)
+```
+
+## Time Series
+
+```{r}
+ts <- get_timeseries(
+  election_key = "congreso_espana_2027",
+  party = "psoe"
+)
+```
+
+## Plotting
+
+```{r}
+library(ggplot2)
+
+ggplot(ts, aes(date, vote_share, color = pollster_name)) +
+  geom_point() +
+  geom_line(aes(group = pollster_name), alpha = 0.4) +
+  labs(
+    title = "Voting intention for PSOE",
+    x = NULL,
+    y = "Vote share (%)"
+  )
+```
+
+## Pagination
+
+Paginated functions accept `limit`, `offset`, and `collect_all`.
+
+```{r}
+all_results <- get_results(
+  election_key = "congreso_espana_2027",
+  collect_all = TRUE
+)
+```
+
+When `collect_all = TRUE`, the client starts at offset 0 and requests pages
+until the API reports that all matching rows have been downloaded.
+
+## Errors
+
+The package validates common bad inputs before making HTTP requests, including
+invalid `limit`, `offset`, dates, logical flags, `poll_id`, and `date_field`.
+HTTP errors from the API are rethrown as clear R errors with `cli`.
+
+## Spain Electoral Project
+
+This package is part of the Spain Electoral Project ecosystem. Cite or link the
+Spain Electoral Project when using the API data in public work.
+
+## Current Limitations
+
+- The API is read-only and unauthenticated in v1.
+- Administrative endpoints are not included.
+- `get_poll_results()` extracts nested results because the API does not expose a
+  separate poll-results route.
+- Sorting order is determined by the API and is not specified as a stable client
+  contract.

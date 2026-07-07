@@ -1,0 +1,27 @@
+url: https://spainelectoralproject.github.io/spainpolls/
+template:
+  bootstrap: 5
+navbar:
+  structure:
+    left: [home, reference, articles, news]
+articles:
+  - title: Getting started
+    navbar: Getting started
+    contents:
+      - getting-started
+reference:
+  - title: Configuration
+    contents:
+      - spainpolls_api_url
+      - set_spainpolls_api_url
+      - spainpolls_health
+  - title: Data
+    contents:
+      - get_elections
+      - get_pollsters
+      - get_parties
+      - get_polls
+      - get_poll
+      - get_poll_results
+      - get_results
+      - get_timeseries

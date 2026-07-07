@@ -1,0 +1,115 @@
+---
+title: "Getting started with spainpolls"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with spainpolls}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+```
+
+```{r}
+library(spainpolls)
+```
+
+## Elections, Pollsters and Parties
+
+```{r}
+elections <- get_elections(limit = 10)
+
+pollsters <- get_pollsters(
+  election_key = "congreso_espana_2027"
+)
+
+parties <- get_parties(
+  election_key = "congreso_espana_2027"
+)
+```
+
+## Polls
+
+```{r}
+polls <- get_polls(
+  election_key = "congreso_espana_2027",
+  limit = 20
+)
+
+one_poll <- get_poll(101)
+one_poll_results <- get_poll_results(101)
+```
+
+## Results
+
+`get_results()` returns one row per poll and party.
+
+```{r}
+results <- get_results(
+  election_key = "congreso_espana_2027",
+  collect_all = TRUE
+)
+```
+
+## Time Series
+
+```{r}
+ts <- get_timeseries(
+  election_key = "congreso_espana_2027",
+  party = "psoe",
+  date_field = "auto"
+)
+```
+
+## Analysis with dplyr
+
+```{r}
+library(dplyr)
+
+get_results(election_key = "congreso_espana_2027", collect_all = TRUE) |>
+  filter(party_key %in% c("psoe", "pp", "vox", "sumar")) |>
+  group_by(party_key) |>
+  summarise(mean_vote = mean(vote_share, na.rm = TRUE), .groups = "drop")
+```
+
+## Plotting with ggplot2
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+ts <- get_timeseries(
+  election_key = "congreso_espana_2027",
+  date_field = "fieldwork_end", 
+  party_key = c("psoe", "pp", "vox", "sumar"),
+  collect_all = T, 
+  include_manual_review = T
+)
+
+ts |> 
+  ggplot(aes(x = date, y = vote_share, fill = color_hex, color = color_hex, group = short_name)) +
+  geom_hline(yintercept = 0, alpha = .3) +
+  geom_smooth(span = .1, alpha = .2) +
+  geom_point(
+    aes(x = date, y = vote_share), 
+    data = plot_data,
+    alpha = .1
+  ) + 
+  scale_color_identity(aesthetics = c("color", "fill")) +
+  theme_minimal() +
+  labs(x = NULL, y = "Vote share (%)")
+```
+
+## Pagination
+
+All list endpoints are paginated. Use `limit` and `offset` for one page, or `collect_all = TRUE` to download all matching pages:
+
+```{r}
+all_polls <- get_polls(
+  election_key = "congreso_espana_2027",
+  collect_all = TRUE
+)
+```
+
+When collecting all rows, `spainpolls` starts at offset 0 and stops when the API reports that all matching rows have been downloaded.
