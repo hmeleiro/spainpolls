@@ -9,7 +9,7 @@
 #' @examples
 #' spainpolls_api_url()
 spainpolls_api_url <- function() {
-  url <- getOption("spainpolls.api_url", "https://polls.spainelectoralproject.com")
+  url <- getOption("spainpolls.api_url", "https://pollsdb.spainelectoralproject.com")
   normalize_base_url(url)
 }
 
