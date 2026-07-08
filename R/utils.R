@@ -36,8 +36,7 @@ null_to_na <- function(x) {
 
 empty_schema_tibble <- function(schema) {
   cols <- purrr::imap(schema, function(type, name) {
-    switch(
-      type,
+    switch(type,
       integer = integer(),
       numeric = numeric(),
       logical = logical(),
@@ -65,8 +64,7 @@ apply_schema <- function(x, schema) {
 }
 
 missing_column <- function(type, n) {
-  switch(
-    type,
+  switch(type,
     integer = rep(NA_integer_, n),
     numeric = rep(NA_real_, n),
     logical = rep(NA, n),
@@ -78,8 +76,7 @@ missing_column <- function(type, n) {
 }
 
 coerce_column <- function(x, type) {
-  switch(
-    type,
+  switch(type,
     integer = as.integer(x),
     numeric = as.numeric(x),
     logical = as.logical(x),
@@ -91,8 +88,7 @@ coerce_column <- function(x, type) {
 }
 
 sort_spainpolls_tibble <- function(x, kind) {
-  switch(
-    kind,
+  switch(kind,
     elections = dplyr::arrange(
       x,
       dplyr::desc(.data[["election_date"]]),
@@ -238,5 +234,7 @@ timeseries_schema <- c(
   short_name = "character",
   color_hex = "character",
   display_order = "integer",
-  vote_share = "numeric"
+  vote_share = "numeric",
+  seats_min = "integer",
+  seats_max = "integer"
 )
