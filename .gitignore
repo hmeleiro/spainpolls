@@ -1,3 +1,47 @@
+# Local project notes
 initial-prompt.md
-.Rbuildignore
+
+# R session files and local environment
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+.httr-oauth
+
+# RStudio
 .Rproj.user/
+
+# Package build and check artifacts
+/*.tar.gz
+/*.Rcheck/
+/check/
+/doc/
+/Meta/
+src/*.o
+src/*.so
+src/*.dll
+src/symbols.rds
+
+# knitr, rmarkdown, Quarto, and pkgdown output
+pkgdown-site/
+*_cache/
+*_files/
+!README_files/
+!README_files/**
+vignettes/*.html
+vignettes/*.pdf
+.quarto/
+_freeze/
+
+# renv local state (keep renv.lock and renv/activate.R tracked)
+renv/library/
+renv/staging/
+renv/python/
+renv/local/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# API handoff working documents
+docs/r-package-handoff/

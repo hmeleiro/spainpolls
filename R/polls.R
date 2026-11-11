@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   get_polls(election_key = "congreso_espana_2027", limit = 10)
+#'   get_polls(election_key = "congreso_espana_2026", limit = 10)
 #' }
 get_polls <- function(election_key = NULL,
                       territory_code = NULL,

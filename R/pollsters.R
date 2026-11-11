@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   get_pollsters(election_key = "congreso_espana_2027")
+#'   get_pollsters(election_key = "congreso_espana_2026")
 #' }
 get_pollsters <- function(election_key = NULL,
                           territory_code = NULL,

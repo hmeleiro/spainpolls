@@ -21,11 +21,11 @@ library(spainpolls)
 elections <- get_elections(limit = 10)
 
 pollsters <- get_pollsters(
-  election_key = "congreso_espana_2027"
+  election_key = "congreso_espana_2026"
 )
 
 parties <- get_parties(
-  election_key = "congreso_espana_2027"
+  election_key = "congreso_espana_2026"
 )
 ```
 
@@ -33,7 +33,7 @@ parties <- get_parties(
 
 ```{r}
 polls <- get_polls(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   limit = 20
 )
 
@@ -47,7 +47,7 @@ one_poll_results <- get_poll_results(101)
 
 ```{r}
 results <- get_results(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   collect_all = TRUE
 )
 ```
@@ -56,7 +56,7 @@ results <- get_results(
 
 ```{r}
 ts <- get_timeseries(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   party = "psoe",
   date_field = "auto"
 )
@@ -67,7 +67,7 @@ ts <- get_timeseries(
 ```{r}
 library(dplyr)
 
-get_results(election_key = "congreso_espana_2027", collect_all = TRUE) |>
+get_results(election_key = "congreso_espana_2026", collect_all = TRUE) |>
   filter(party_key %in% c("psoe", "pp", "vox", "sumar")) |>
   group_by(party_key) |>
   summarise(mean_vote = mean(vote_share, na.rm = TRUE), .groups = "drop")
@@ -80,7 +80,7 @@ library(dplyr)
 library(ggplot2)
 
 ts <- get_timeseries(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   date_field = "fieldwork_end", 
   party_key = c("psoe", "pp", "vox", "sumar"),
   collect_all = T, 
@@ -107,7 +107,7 @@ All list endpoints are paginated. Use `limit` and `offset` for one page, or `col
 
 ```{r}
 all_polls <- get_polls(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   collect_all = TRUE
 )
 ```

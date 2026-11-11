@@ -24,7 +24,7 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   get_timeseries(election_key = "congreso_espana_2027", party = "psoe")
+#'   get_timeseries(election_key = "congreso_espana_2026", party = "psoe")
 #' }
 get_timeseries <- function(election_key = NULL,
                            territory_code = NULL,

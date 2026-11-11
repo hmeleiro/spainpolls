@@ -1,7 +1,6 @@
 test_that("catalogue endpoints parse typed tibbles", {
   withr::local_options(spainpolls.request_fn = function(path, query) {
-    switch(
-      path,
+    switch(path,
       elections = mock_page(list(list(
         id = 1,
         election_key = "congreso_espana_2027",
@@ -158,24 +157,24 @@ test_that("results and timeseries parse analytical tibbles", {
           sample_size = 1200
         ),
         list(
-        party_key = "psoe",
-        party_raw = "PSOE",
-        party_name = "Partido Socialista Obrero Espanol",
-        short_name = "PSOE",
-        color_hex = "#e30613",
-        display_order = 10,
-        vote_share = 31.2,
-        seats_min = NULL,
-        seats_max = NULL,
-        poll_id = 101,
-        date = "2026-06-05",
-        election_key = "congreso_espana_2027",
-        pollster_key = "40db",
-        pollster_name = "40dB",
-        media = "El Pais",
-        fieldwork_end = "2026-06-05",
-        publication_date = "2026-06-07",
-        sample_size = 1200
+          party_key = "psoe",
+          party_raw = "PSOE",
+          party_name = "Partido Socialista Obrero Espanol",
+          short_name = "PSOE",
+          color_hex = "#e30613",
+          display_order = 10,
+          vote_share = 31.2,
+          seats_min = NULL,
+          seats_max = NULL,
+          poll_id = 101,
+          date = "2026-06-05",
+          election_key = "congreso_espana_2027",
+          pollster_key = "40db",
+          pollster_name = "40dB",
+          media = "El Pais",
+          fieldwork_end = "2026-06-05",
+          publication_date = "2026-06-07",
+          sample_size = 1200
         )
       )))
     }

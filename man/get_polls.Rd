@@ -62,6 +62,6 @@ Lists polls with poll-level metadata.
 }
 \examples{
 if (interactive()) {
-  get_polls(election_key = "congreso_espana_2027", limit = 10)
+  get_polls(election_key = "congreso_espana_2026", limit = 10)
 }
 }

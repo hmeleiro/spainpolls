@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   get_parties(election_key = "congreso_espana_2027")
+#'   get_parties(election_key = "congreso_espana_2026")
 #' }
 get_parties <- function(election_key = NULL,
                         territory_code = NULL,

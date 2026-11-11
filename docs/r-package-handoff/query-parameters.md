@@ -8,7 +8,7 @@ Booleans should be sent as `true` or `false`.
 |---|---:|---|---|---|---|---|
 | `territory_code` | string | `/api/v1/elections`, `/api/v1/pollsters`, `/api/v1/parties`, `/api/v1/polls`, `/api/v1/results`, `/api/v1/timeseries` | none | Known territory codes, for example `ES` | Exact territory filter from elections. | character |
 | `election_type` | string | `/api/v1/elections` | none | Values in database, for example `general` | Exact election type filter. | character |
-| `election_key` | string | `/api/v1/pollsters`, `/api/v1/parties`, `/api/v1/polls`, `/api/v1/results`, `/api/v1/timeseries` | none | Known election keys, for example `congreso_espana_2027` | Stable election identifier. | character |
+| `election_key` | string | `/api/v1/pollsters`, `/api/v1/parties`, `/api/v1/polls`, `/api/v1/results`, `/api/v1/timeseries` | none | Known election keys, for example `congreso_espana_2026` | Stable election identifier. | character |
 | `pollster_key` | string | `/api/v1/polls`, `/api/v1/results`, `/api/v1/timeseries` | none | Known pollster keys, for example `40db` | Exact pollster key filter, case-insensitive. | character |
 | `pollster` | string | `/api/v1/polls`, `/api/v1/results`, `/api/v1/timeseries` | none | Pollster key or exact pollster name | Case-insensitive exact match against `pollster_key` or `pollster_name`. | character |
 | `media` | string | `/api/v1/polls`, `/api/v1/results`, `/api/v1/timeseries` | none | Any substring | Case-insensitive substring match against `polls.media`. | character |

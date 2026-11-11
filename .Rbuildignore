@@ -1,0 +1,10 @@
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown-site$
+^initial-prompt\.md$
+^README\.Rmd$
+^\.Rproj\.user$
+^\.git$
+^\.gitignore$
+^.*\.Rproj$

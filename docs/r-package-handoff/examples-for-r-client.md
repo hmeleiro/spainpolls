@@ -51,7 +51,7 @@ curl "http://localhost:8000/api/v1/elections?limit=10"
   "items": [
     {
       "id": 1,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_type": "general",
       "territory_code": "ES",
       "election_name": "Congreso de los Diputados 2027",
@@ -75,7 +75,7 @@ get_elections(limit = 10)
 ### HTTP request
 
 ```bash
-curl "http://localhost:8000/api/v1/pollsters?election_key=congreso_espana_2027"
+curl "http://localhost:8000/api/v1/pollsters?election_key=congreso_espana_2026"
 ```
 
 ### Expected JSON response
@@ -99,7 +99,7 @@ curl "http://localhost:8000/api/v1/pollsters?election_key=congreso_espana_2027"
 ### Suggested R call
 
 ```r
-get_pollsters(election_key = "congreso_espana_2027")
+get_pollsters(election_key = "congreso_espana_2026")
 ```
 
 ## Example: list parties
@@ -107,7 +107,7 @@ get_pollsters(election_key = "congreso_espana_2027")
 ### HTTP request
 
 ```bash
-curl "http://localhost:8000/api/v1/parties?election_key=congreso_espana_2027"
+curl "http://localhost:8000/api/v1/parties?election_key=congreso_espana_2026"
 ```
 
 ### Expected JSON response
@@ -135,7 +135,7 @@ curl "http://localhost:8000/api/v1/parties?election_key=congreso_espana_2027"
 ### Suggested R call
 
 ```r
-get_parties(election_key = "congreso_espana_2027")
+get_parties(election_key = "congreso_espana_2026")
 ```
 
 ## Example: get recent polls
@@ -159,7 +159,7 @@ curl "https://pollsdb.spainelectoralproject.com/api/v1/polls?limit=10"
   "items": [
     {
       "id": 101,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_name": "Congreso de los Diputados 2027",
       "territory_code": "ES",
       "pollster_key": "40db",
@@ -203,7 +203,7 @@ curl "http://localhost:8000/api/v1/polls/101"
 ```json
 {
   "id": 101,
-  "election_key": "congreso_espana_2027",
+  "election_key": "congreso_espana_2026",
   "election_name": "Congreso de los Diputados 2027",
   "territory_code": "ES",
   "pollster_key": "40db",
@@ -267,7 +267,7 @@ curl "http://localhost:8000/api/v1/results?limit=10"
       "seats_max": null,
       "poll_id": 101,
       "date": "2026-06-05",
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "pollster_key": "40db",
       "pollster_name": "40dB",
       "media": "El Pais",
@@ -344,7 +344,7 @@ curl "http://localhost:8000/api/v1/polls?pollster=40db&limit=10"
   "items": [
     {
       "id": 101,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_name": "Congreso de los Diputados 2027",
       "territory_code": "ES",
       "pollster_key": "40db",
@@ -418,7 +418,7 @@ curl "http://localhost:8000/api/v1/polls?include_manual_review=true&limit=10"
   "items": [
     {
       "id": 102,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_name": "Congreso de los Diputados 2027",
       "territory_code": "ES",
       "pollster_key": "40db",
@@ -466,7 +466,7 @@ curl "http://localhost:8000/api/v1/polls?include_inactive=true&limit=10"
   "items": [
     {
       "id": 103,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_name": "Congreso de los Diputados 2027",
       "territory_code": "ES",
       "pollster_key": "40db",

@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   get_results(election_key = "congreso_espana_2027", party = "psoe")
+#'   get_results(election_key = "congreso_espana_2026", party = "psoe")
 #' }
 get_results <- function(election_key = NULL,
                         territory_code = NULL,

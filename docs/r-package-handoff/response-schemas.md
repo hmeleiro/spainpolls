@@ -56,7 +56,7 @@ Example:
 ```json
 {
   "id": 1,
-  "election_key": "congreso_espana_2027",
+  "election_key": "congreso_espana_2026",
   "election_type": "general",
   "territory_code": "ES",
   "election_name": "Congreso de los Diputados 2027",
@@ -140,7 +140,7 @@ Example:
 ```json
 {
   "id": 101,
-  "election_key": "congreso_espana_2027",
+  "election_key": "congreso_espana_2026",
   "election_name": "Congreso de los Diputados 2027",
   "territory_code": "ES",
   "pollster_key": "40db",
@@ -173,7 +173,7 @@ Example:
 ```json
 {
   "id": 101,
-  "election_key": "congreso_espana_2027",
+  "election_key": "congreso_espana_2026",
   "election_name": "Congreso de los Diputados 2027",
   "territory_code": "ES",
   "pollster_key": "40db",
@@ -251,7 +251,7 @@ Example:
   "seats_max": null,
   "poll_id": 101,
   "date": "2026-06-05",
-  "election_key": "congreso_espana_2027",
+  "election_key": "congreso_espana_2026",
   "pollster_key": "40db",
   "pollster_name": "40dB",
   "media": "El Pais",

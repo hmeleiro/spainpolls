@@ -61,6 +61,6 @@ Returns poll results in long format, with one row per poll and party.
 }
 \examples{
 if (interactive()) {
-  get_results(election_key = "congreso_espana_2027", party = "psoe")
+  get_results(election_key = "congreso_espana_2026", party = "psoe")
 }
 }

@@ -35,6 +35,6 @@ Lists pollsters and matching poll counts.
 }
 \examples{
 if (interactive()) {
-  get_pollsters(election_key = "congreso_espana_2027")
+  get_pollsters(election_key = "congreso_espana_2026")
 }
 }

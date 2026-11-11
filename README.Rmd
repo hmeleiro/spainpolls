@@ -6,7 +6,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = FALSE
+  eval = TRUE
 )
 ```
 
@@ -22,29 +22,9 @@ or modify records.
 
 ## Installation
 
-```{r}
+```{r installation, eval=FALSE}
 # install.packages("pak")
-pak::pak("")
-```
-
-## Configure the API URL
-
-By default, `spainpolls` uses:
-
-```{r}
-spainpolls_api_url()
-```
-
-To use a local API:
-
-```{r}
-set_spainpolls_api_url("http://localhost:8000")
-```
-
-You can also set the global option directly:
-
-```{r}
-options(spainpolls.api_url = "http://localhost:8000")
+pak::pak("hmeleiro/spainpolls")
 ```
 
 ## Covered Endpoints
@@ -70,39 +50,53 @@ results.
 library(spainpolls)
 
 elections <- get_elections(limit = 10)
-pollsters <- get_pollsters(election_key = "congreso_espana_2027")
-parties <- get_parties(election_key = "congreso_espana_2027")
+pollsters <- get_pollsters(election_key = "congreso_espana_2026")
+parties <- get_parties(election_key = "congreso_espana_2026")
+
+elections
+pollsters
+parties
 ```
 
 ## Polls
 
 ```{r}
 polls <- get_polls(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   limit = 10
 )
 
 poll <- get_poll(101)
 poll_results <- get_poll_results(101)
+
+poll
+poll_results
 ```
 
 ## Long Results
 
 ```{r}
 results <- get_results(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   party = "psoe",
   collect_all = TRUE
 )
+
+results
+
 ```
 
 ## Time Series
 
 ```{r}
 ts <- get_timeseries(
-  election_key = "congreso_espana_2027",
-  party = "psoe"
+  election_key = "congreso_espana_2026",
+  party = c("psoe", "pp", "vox", "sumar", "podemos"),  
+  date_from = "2025-01-01", date_to = "2026-11-11", 
+  collect_all = TRUE
 )
+
+ts
 ```
 
 ## Plotting
@@ -110,14 +104,18 @@ ts <- get_timeseries(
 ```{r}
 library(ggplot2)
 
-ggplot(ts, aes(date, vote_share, color = pollster_name)) +
-  geom_point() +
-  geom_line(aes(group = pollster_name), alpha = 0.4) +
+ggplot(ts, aes(x= date, y = vote_share, color = color_hex)) +
+geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +
+  geom_point(alpha = .3) +
+  geom_smooth(linewidth = 1, se = FALSE, span = .7) +
   labs(
-    title = "Voting intention for PSOE",
+    title = "Voting intention for main parties",
     x = NULL,
     y = "Vote share (%)"
-  )
+  ) +
+  scale_color_identity() +
+  theme_minimal()
+
 ```
 
 ## Pagination
@@ -126,9 +124,11 @@ Paginated functions accept `limit`, `offset`, and `collect_all`.
 
 ```{r}
 all_results <- get_results(
-  election_key = "congreso_espana_2027",
+  election_key = "congreso_espana_2026",
   collect_all = TRUE
 )
+
+all_results
 ```
 
 When `collect_all = TRUE`, the client starts at offset 0 and requests pages

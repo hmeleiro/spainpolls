@@ -88,7 +88,7 @@ curl "http://localhost:8000/api/v1/elections?territory_code=ES&limit=10"
   "items": [
     {
       "id": 1,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_type": "general",
       "territory_code": "ES",
       "election_name": "Congreso de los Diputados 2027",
@@ -134,7 +134,7 @@ Paginated response. Each item is a `Pollster`.
 ### Example request
 
 ```bash
-curl "http://localhost:8000/api/v1/pollsters?election_key=congreso_espana_2027"
+curl "http://localhost:8000/api/v1/pollsters?election_key=congreso_espana_2026"
 ```
 
 ### Example response
@@ -188,7 +188,7 @@ Paginated response. Each item is a `Party`.
 ### Example request
 
 ```bash
-curl "http://localhost:8000/api/v1/parties?election_key=congreso_espana_2027"
+curl "http://localhost:8000/api/v1/parties?election_key=congreso_espana_2026"
 ```
 
 ### Example response
@@ -257,7 +257,7 @@ Paginated response. Each item is a `Poll summary`.
 ### Example request
 
 ```bash
-curl "http://localhost:8000/api/v1/polls?election_key=congreso_espana_2027&limit=2"
+curl "http://localhost:8000/api/v1/polls?election_key=congreso_espana_2026&limit=2"
 ```
 
 ### Example response
@@ -267,7 +267,7 @@ curl "http://localhost:8000/api/v1/polls?election_key=congreso_espana_2027&limit
   "items": [
     {
       "id": 101,
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "election_name": "Congreso de los Diputados 2027",
       "territory_code": "ES",
       "pollster_key": "40db",
@@ -334,7 +334,7 @@ curl "http://localhost:8000/api/v1/polls/101"
 ```json
 {
   "id": 101,
-  "election_key": "congreso_espana_2027",
+  "election_key": "congreso_espana_2026",
   "election_name": "Congreso de los Diputados 2027",
   "territory_code": "ES",
   "pollster_key": "40db",
@@ -443,7 +443,7 @@ curl "http://localhost:8000/api/v1/results?party=psoe&limit=2"
       "seats_max": null,
       "poll_id": 101,
       "date": "2026-06-05",
-      "election_key": "congreso_espana_2027",
+      "election_key": "congreso_espana_2026",
       "pollster_key": "40db",
       "pollster_name": "40dB",
       "media": "El Pais",

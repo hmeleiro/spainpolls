@@ -35,6 +35,6 @@ Lists the canonical party catalogue with public poll counts.
 }
 \examples{
 if (interactive()) {
-  get_parties(election_key = "congreso_espana_2027")
+  get_parties(election_key = "congreso_espana_2026")
 }
 }

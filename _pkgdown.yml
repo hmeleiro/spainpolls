@@ -1,27 +1,73 @@
 url: https://spainelectoralproject.github.io/spainpolls/
+destination: pkgdown-site
+
 template:
+  package: spainelectoraltheme
   bootstrap: 5
+
+lang: en
+
 navbar:
   structure:
     left: [home, reference, articles, news]
+    right: [github, search]
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/hmeleiro/spainpolls
+      aria-label: GitHub repository
+
+repo:
+  url:
+    home: https://github.com/hmeleiro/spainpolls
+    issue: https://github.com/hmeleiro/spainpolls/issues
+    user: https://github.com/hmeleiro
+
+home:
+  sidebar:
+    structure: [license, authors, citation]
+
 articles:
   - title: Getting started
     navbar: Getting started
     contents:
       - getting-started
+
+news:
+  cran_dates: false
+
 reference:
   - title: Configuration
+    desc: Configure the API endpoint and check service availability.
     contents:
       - spainpolls_api_url
       - set_spainpolls_api_url
       - spainpolls_health
-  - title: Data
+  - title: Elections and catalogues
+    desc: Discover elections, pollsters, and parties available through the API.
     contents:
       - get_elections
       - get_pollsters
       - get_parties
+  - title: Polls and results
+    desc: Download poll metadata, party results, and voting-intention time series.
+    contents:
       - get_polls
       - get_poll
       - get_poll_results
       - get_results
       - get_timeseries
+
+footer:
+  structure:
+    left: [developed_by, sep_branding]
+    right: [license, built_with]
+  components:
+    sep_branding: >
+      Part of the <a href="https://spainelectoralproject.com/" target="_blank" rel="noopener">Spain Electoral Project</a>.
+    license: >
+      Licensed under the <a href="https://opensource.org/license/mit" target="_blank" rel="noopener">MIT License</a>.
+
+authors:
+  "Spain Electoral Project":
+    href: https://spainelectoralproject.com/
